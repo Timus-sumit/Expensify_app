@@ -1,17 +1,27 @@
 import uuid from 'uuid';
+import database from '../firebase/firebase';
 
 //Add_expense
 
-export const addExpense = ({description='',note = '',amount=0,createdAt=0}={})=>{
+export const addExpense = (expense)=>{
     return {
         type:'ADD_EXPENSE',
-        expense:{
-            id : uuid(),
-            description,
-            note,
-            amount,
-            createdAt
-        }
+        expense
+    }
+}
+
+export const startAddExpense = (expenseData={})=>{
+    return (dispatch)=>{
+        const {description="", note ="", amount =0,createdAt=0}=expenseData;
+
+        const expense = {description,note,amount,createdAt};
+        database.ref('expenses').push(expense).then((ref)=>{
+            dispatch(addExpense({
+                id : ref.key,
+                ...expense
+            }))
+        })
+    
     }
 }
 
@@ -31,5 +41,28 @@ export const editExpense = (id,updates)=>{
         type:'EDIT_EXPENSE',
         id,
         updates
+    }
+}
+
+export const setExpense = (expense)=>{
+    return{
+        type:'SET_EXPENSE',
+        expense
+    }
+}
+export const startSetExpense = ()=>{
+    return (dispatch)=>{
+        
+    return database.ref('expenses').once('value').then((snapshot)=>{
+            const expense = [];
+            snapshot.forEach((childSnapShot)=>{
+                expense.push({
+                    id: childSnapShot.key,
+                    ...childSnapShot.val()
+                })
+            })
+
+            dispatch(setExpense(expense))
+        })
     }
 }
