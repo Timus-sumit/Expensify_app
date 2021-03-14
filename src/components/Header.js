@@ -5,11 +5,14 @@ import {connect} from 'react-redux';
 
 const Header=({startLogout})=>{
     return(
-        <header>
-            <h1><NavLink to="/" exact={true}>Expensify</NavLink></h1>
-            <NavLink to="/create">create  </NavLink>
-            <NavLink to="/help">help  </NavLink>
-            <button onClick={startLogout}>LogOut</button>
+        <header className="header">
+            <div className="contentContainer">
+                <div className="header__content">
+                    <h1><NavLink className="header__title" to="/" exact={true}>Rupee Manager</NavLink></h1>
+                    <button className="button button--link" onClick={startLogout}>Logout</button>
+                </div>
+           
+            </div> 
         </header>
     )
 }

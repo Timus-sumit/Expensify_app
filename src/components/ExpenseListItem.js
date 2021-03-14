@@ -8,13 +8,15 @@ const ExpenseListItem = ({dispatch, id,description , amount, createdAt})=>{
     
     return (
         <div>
-            <h3>{description}</h3>
-            <p>
-            ₹{amount}
-            -
-            {moment(createdAt).format('MMMM Do, YYYY')}</p>
-            
-            <NavLink to={"/edit/"+id}>Edit</NavLink>
+            <NavLink className="list-item" to={"/edit/"+id}>
+                <div>
+                    <h3 className="list-item__title">{description}</h3>
+                    <span className="list-item__subtitle">{moment(createdAt).format('MMMM Do, YYYY')}</span>
+                </div>
+                <div>
+                    <h3 className="list-item__data"> ₹{amount}</h3>
+                </div>
+            </NavLink>
         </div>
     )
 }

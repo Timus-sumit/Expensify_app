@@ -1,0 +1,16 @@
+.header{
+    background: $google-green;
+    margin-top: none;
+}
+.header__title{
+    color:white;
+    text-decoration: none;
+    margin:none;
+}
+
+.header__content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: .8rem;
+}

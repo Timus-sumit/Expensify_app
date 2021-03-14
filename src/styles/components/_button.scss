@@ -1,0 +1,22 @@
+.button{
+    background: $google-green;
+    color: $google-white;
+    font-weight: bold;
+    font-size: $font-large;
+    border: none;
+    padding: $m-size;
+    text-decoration: none;
+    margin-bottom: $m-size;
+}
+
+.button--link{
+    background: none;
+    border: none;
+    color: white;
+    font-weight: 500;
+    font-size: large;
+}
+
+.button--remove{
+    background: $google-red;
+}
