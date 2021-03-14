@@ -7,7 +7,7 @@ const CreatePage=(props)=>{
         <div>
             <div className="pageheader">
                 <div className="contentContainer">
-                    <h1 className="pageheader__title">Create Shit</h1>
+                    <h1 className="pageheader__title">Add an Expense !</h1>
                 </div>
             </div>
             <div className="contentContainer">
